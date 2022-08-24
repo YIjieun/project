@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "HTTP://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<settings> 
+    <setting name="cacheEnabled" value="false" />
+    <setting name="jdbcTypeForNull" value="NULL" />
+</settings>
+
+<!-- DTO클래스의 별칭을 부여 -->
+	<typeAliases>
+	   <typeAlias alias="R2ReplyVO" type="com.board.domain.R2ReplyVO"/> 
+		<typeAlias alias="R2BoardVO"  type="com.board.domain.R2BoardVO"/>
+		<typeAlias alias="R1BoardVO"  type="com.board.domain.R1BoardVO"/>
+		<typeAlias alias="FreeBoardVO"  type="com.board.domain.FreeBoardVO"/>
+		<typeAlias alias="FreeReplyVO"  type="com.board.domain.FreeReplyVO"/>
+		
+	
+	    <typeAlias alias="MemberVO"  type="com.board.domain.MemberVO"/>
+	    <typeAlias alias="EventVO"    type="com.board.domain.EventVO"/>
+	    
+	        
+	</typeAliases>
+	
+	<!-- 접속후 불러올 파일의 리스트를 적어주는 부분 (xml파일 경로는 .대신 /로 표시) -->
+	<mappers>
+	    <mapper resource="com/board/dao/R2ReplyMapper.xml"/>
+	  	 <mapper resource="com/board/dao/R2BoardMapper.xml"/>
+	  	 <mapper resource="com/board/dao/R1BoardMapper.xml"/>
+	  	 <mapper resource="com/board/dao/FreeBoardMapper.xml"/>
+	  	 <mapper resource="com/board/dao/FreeReplyMapper.xml"/>
+	  	 
+	  	 
+	  	 <mapper resource="com/board/dao/MainMapper.xml"/>
+	     <mapper resource="com/board/dao/MemberMapper.xml"/>
+	     <mapper resource="com/board/dao/EventBoardMapper.xml"/>
+	     
+	    
+	</mappers>
+</configuration>

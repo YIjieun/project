@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="Board">  
+ 
+<!--1.re_board 테이블에서 SQL작업(1.글목록보기)   -->  
+<select id="selectList3" parameterType="map"  resultType="R1BoardVO">
+    select board_num,title,writer2,category,cook1,cook2,re_view,postdate,main_img
+     	 from (select a.*,rownum rnum
+     	   from (select * from re_board 
+     	         <where>
+     	         	<if test="keyWord!=null and keyField=='title'">
+     	         	      title like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<if test="keyWord!=null and keyField=='cook1'">
+     	         	      cook1 like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<if test="keyWord!=null and keyField=='category'">
+     	         	      category like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<!-- <if test="keyWord!=null and keyField=='all'">
+     	         	      title like '%' || #{keyWord} || '%' or
+     	         	      category like '%' || #{keyWord} || '%' or
+     	         	      cook1 like '%' || #{keyWord} || '%'
+     	         	</if> -->
+     	         </where>
+     	   order by board_num desc) a) 
+   <![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+     ]]>
+</select>
+
+ <!-- 조회수 높은순으로 게시물 뽑기 -->
+ <select id="selectMax_review3" resultType="R1BoardVO" >
+ 		select rownum "num" ,main_img,re_view,category,title,board_num
+          from (
+                    select main_img,re_view,category,title,board_num
+                    from re_board
+                    order by re_view desc)
+    <![CDATA[
+    where rownum <=3
+     ]]>
+ </select>
+ 
+ <!-- 2.검색어에 해당하는 총레코드수 구하기(java.lang.Integer->Integer->int) -->
+ <select id="selectCount3" parameterType="map" resultType="Integer">
+    select count(*) from re_board
+ 			<where>
+     	         	<if test="keyWord!=null and keyField=='title'">
+     	         	      title like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<if test="keyWord!=null and keyField=='category'">
+     	         	      category like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<if test="keyWord!=null and keyField=='cook1'">
+     	         	      cook1 like '%' || #{keyWord} || '%'
+     	         	</if>
+     	         	<!-- <if test="keyWord!=null and keyField=='all'">
+     	         	      title like '%' || #{keyWord} || '%' or
+     	         	      cook1 like '%' || #{keyWord} || '%'
+     	         	</if> -->
+     	         </where>
+ </select>
+ <!--최대값구하기  -->
+ <select id="getNewSeq3" resultType="int">
+ 	select max(board_num) from re_board
+ 
+ </select>
+ 
+ <!-- mem_id 추가되어있는 원본
+ 3. 글쓰기  hit는 값을 입력해주지 않는다. (sysdate,mysql(new()),  
+ 		업로드하는 파일명만 jdbcType=VARCHAR(문자열이라는구문)추가 -->
+ <insert id="insertBoard3" parameterType="R1BoardVO">
+     insert into re_board(board_num,manager_id,mem_id,title,writer2,category,main_img,cook1,cook2,re_view,postdate,heart,click)
+    values(#{board_num},#{manager_id},#{mem_id},#{title},#{writer2},#{category},#{main_img,jdbcType=VARCHAR},#{cook1},#{cook2},0,sysdate,0,0)
+</insert>
+ 
+ 
+ <!-- mem_id 제외한 수정본
+ <insert id="insertBoard3" parameterType="R1BoardVO">
+    insert into re_board(board_num,manager_id,heart,title,writer2,category,cook1,cook2,re_view,postdate,main_img)
+    values(#{board_num},#{manager_id},#{heart},#{title},#{writer2},#{category},#{cook1},#{cook2},0,sysdate,
+              #{main_img})
+ </insert>
+  -->
+ 
+ <!-- 글쓰기 추가 -->
+ <!-- <select id="search" parameterType="String">
+ 	select "manager_id" from manager where manager_id=#{manager_id}
+ </select>
+ 
+ <select id="writer" parameterType="String">
+ 	select "writer" from manager where manager_id=#{manager_id}
+ </select> -->
+ 
+ <!-- 4. 조회수 증가하기 java.lang.String=>String(O)=>string(X)-->
+ <update id="updateHit3" parameterType="Integer">
+    update re_board set re_view=re_view+1 where board_num=#{board_num}
+ </update>
+ 
+ <!-- 5. 게시물번호에 따른 글상세보기(레코드 한개 출력)  -->
+ <select id="selectBoard3" parameterType="Integer" resultType="R1BoardVO">
+    select * from re_board where board_num=#{board_num}
+ </select>
+ 
+ <!-- 6.글삭제하기 -->
+ <delete id="deleteBoard3" parameterType="Integer">
+    delete from re_board where board_num=#{board_num}
+ </delete>
+ 
+ <!-- 7.글수정하기  -->
+ <update id="updateBoard3" parameterType="R1BoardVO">
+    update re_board set title=#{title},category=#{category},cook1=#{cook1},cook2=#{cook2},
+    main_img=#{main_img}
+    where board_num=#{board_num}
+ </update>
+ 
+ <!-- 8.좋아요 증가 -->
+ <update id="updateHeart" parameterType="Integer">
+    update re_board set heart=heart+1 where board_num=#{board_num}
+ </update>
+ 
+ <!-- 9.좋아요수 확인 -->
+ <select id="clickHeart"  parameterType="Integer" resultType="Integer">
+     select heart from re_board where board_num=#{board_num}
+ </select>
+ 
+ <!--10.좋아요 누른건지 안누른건지 확인하는 sql  -->
+<select id="checkLike" parameterType="hashmap" resultType="int">
+	select count(*) from re_board 
+	where board_num = #{board_num} and mem_id = #{mem_id} and click=0
+</select>
+
+<!-- 11.좋아요 감소 -->
+ <update id="deleteHeart" parameterType="Integer">
+    update re_board set heart=heart-1 where board_num=#{board_num}
+ </update>
+
+<!-- 12.click의 값을 변경시켜주는 메서드 호출 
+ <update id="clickupdate" parameterType="hashmap">
+    update re_board set click=#{click} where board_num=#{board_num}
+ </update>
+ -->
+ 
+ <!-- 좋아요를 체크 -->
+ <update id="check_ok" parameterType="hashMap">
+    update re_board
+    set click = click + 1 
+    where mem_id=#{mem_id} AND board_num=#{board_num}
+  </update>
+  
+  <update id="check_cancel" parameterType="hashMap">
+    update re_board
+    set click = 0
+    where mem_id=#{mem_id} AND board_num=#{board_num}
+  </update>
+  
+  <!-- 현재 check값을 구해오는 sql구문 -->
+  <select id="selectCheck" parameterType="hashMap" resultType="int">
+     select click from re_board where mem_id=#{mem_id} AND board_num=#{board_num}
+  </select>
+  
+  <!-- 아이디로 작성자 찾기 각 id의 닉네임 받아올때 필요 -->
+	<select id="findOne55" resultType="String">
+		select writer2 from manager where manager_id=#{manager_id}
+	</select>
+ </mapper>
+
+
+
+
+
+
+

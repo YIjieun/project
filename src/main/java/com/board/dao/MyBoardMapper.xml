@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="Board">  
+ 
+<!-- 내가 작성한 글 u=회원레시피 f=자유게시판-->
+<select id="userBoard"   parameterType="String" resultType=""> 
+	select u.board_num,u.title,u.writer,u.postdate,u.re_view, 
+			  f.board_num,f.f_title,f.writer,f.postdate,f.f_view 
+	from re_Board2 u , free_board f
+	where u.writer=#{writer};
+</select>
+
+<!-- 내가 작성한 댓글 u=회원레시피댓글 f=자유게시판댓글-->
+<select id="userReply" parameterType="String" resultType="">
+	select u.r_num,u.r_content,u.writer,u.r_write_date,
+			 f.r_num,f.r_content,f.writer,f.r_write_date 
+	from r2_reply u, free_reply f
+	where u.writer=#{writer};
+</select>
+
+<!-- 내가 좋아요 글 m=관리자레시피 u=회원레시피 -->
+<select id="userHeart" parameterType="String"  resultType="">
+	select m.board_num,m.title,m.writer,m.postdate,m.re_view,
+			 u.board_num,u.title,u.writer,u.postdate,u.re_view
+	from re_Board m, re_board2 u
+	where m.writer=#{writer};
+</select>
+	
+</mapper>
+
+
+
+
+
+
+

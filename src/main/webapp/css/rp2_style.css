@@ -1,0 +1,264 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/*
+작성날짜: 2022.03.02~
+작성자 : 이지은
+*/
+
+/* .container {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0;
+} */
+.con_box {
+  display: block;
+  width: 990px;
+  margin: 0 auto;
+}
+.con_title{padding:30px 0;}
+.con_title div {text-align:center; }
+.con_title div img{width:40px;}
+.con_title h1{
+	text-align:center;
+}
+.con_title_t{padding:30px 0;}
+.con_title_t div {text-align:center; }
+.con_title_t div img{width:40px;}
+.con_title_t h3{
+	text-align:center;
+}
+/* 레시피이미지 */
+.con_box > ul {
+	text-align:center;
+	margin-bottom: 50px;
+	
+}
+
+.con_box > ul > li {
+  display: inline-block;
+  width: 280px;
+  list-style-type: none;
+  margin-left: 32px;
+  border: 1px solid #eaedec;
+  transition: transform .3s;
+  overflow: hidden;
+}
+.con_box > ul  li:first-child{
+	margin-left:0;
+}
+
+.con_box > ul > li > a {
+  text-decoration: none;
+}
+.con_box > ul > li > a > img {
+  width: 280px;
+  height: 210px;
+}
+.con_box > ul > li > a > img:hover {
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: .5s;
+}
+
+.videoTit {
+  display: block;
+  width: 280px;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin: 10px auto 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main_image img{
+	width: 400px;
+  	height: 300px;
+  	display:block; 
+    margin-left: 50px;
+    margin-bottom:210px;
+}
+.btn_write{
+	margin-bottom:20px;
+	margin-left: -50px;
+    margin-right: -125px;
+}
+.btn_write input{
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;
+}
+.btn_write_t{margin-bottom:20px;}
+.btn_write_t input{
+	width:120px;
+	height:40px;
+	background-color:#fff;
+	color:#589c71;
+	border:0;
+	outline:0;
+}
+
+.con_table{
+	margin-top:20px;
+}
+
+.paging{
+	text-align:center;
+}
+
+.paging ul li{
+	float:left;
+}
+
+.paging ul li a{color:#777;}
+.paging ul li a:hover{color:#589c71;}
+.paging ul li.active a,
+.paging ul li.active a:hover{
+	background-color:#589c71;
+	border-color:#589c71;
+}
+.t_box{ 
+	display: block;
+	margin-left: -50px;
+ 	margin-right: 100px;  
+	width: 640px;
+	height: 70px;
+	border-style: solid;
+	border-color:#589c71;
+	border-width: 2px; 
+	padding: 12px; 
+	word-break: break-all;
+	text-align:left;
+	align:center;
+ }
+ 
+ .h_box{ 
+	display: block;
+    margin-left: -50px;
+ margin-right: 100px;  
+	width: 640px;
+	height: 220px;
+	border-style: solid;
+	border-color:#589c71;
+	border-width: 2px; 
+	padding: 12px; 
+	word-break: break-all;
+	text-align:left;
+	align:center;
+ }
+.rp_title{
+	display: inline-block;
+	height: 100px;
+	border-color:#589c71;
+	border-width: 2px;
+	padding: 12px; 
+	text-align:center;
+	width: 150%;
+    margin: 10px -80px;
+}
+.second{
+    float: left;
+    
+    width:20%; 
+}
+.third{
+    float: left;
+    margin-left: 5%;
+    width:20%;
+}
+.fourth{
+    float: left;
+    margin-left: 5%;
+    width:20%;
+}
+.rp_title div {text-align:center; }
+.rp_title div img{width:40px;}
+.rp_title h5{
+	text-align:center;
+}
+/******댓글부분**********/
+.reply{
+	margin-top:50px;
+	list-style:none;
+}
+.reply_tit{
+	font-size:20px;
+	margin-bottom:15px;
+}
+.reply_num{color:#589c71;}
+
+.reply_con{line-height:22px;}
+
+.reply_con ul{
+	overflow:hidden;
+	
+	}
+
+.reply_con ul li{ 
+	list-style:none;
+	float:left;
+	color:#999;
+	font-size:14px;
+}
+
+.reply_con ul li.r_content{
+	color:#777;
+	width:100%;
+	padding:5px 0 0 25px;
+}
+
+li #re_delete{
+	font-weight:bold;
+}
+
+
+.re_img{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-right:5px;	
+}
+/*.re_info h4{
+	color:#999;
+	font-size:14px;
+}*/
+
+.re_info a{color:#999;}
+
+.re_info ul li b{margin-right:4px;}
+
+.re_infoname{
+	font-size:17px;
+	color:#ffbb12;
+}
+
+.reply_write{
+	width:100%;
+	
+}
+
+.reply_write{
+	float:left;
+	resize:none;
+	}
+
+ .btn_group > input{
+	width:100px; 
+	background-color:#589c71;
+	color:#fff;
+	border:none;
+}
+
+
+
+
+@media screen and (max-width: 1024px){
+	.con_box, .con_title{
+	width: 94%;
+	padding: 0 10px 0 10px;
+	
+	}
+}

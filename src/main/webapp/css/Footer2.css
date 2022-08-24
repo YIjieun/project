@@ -1,0 +1,6 @@
+/* login,register만 푸터 깨져서 추가 */
+ .footerRight .ftR {
+  display: block;
+  width: 100%;
+  float: right;
+}

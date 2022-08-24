@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* 이벤트 css */
+
+:root{--primary:#937062;--primary_6:rgb(147,112,98,0.6);
+--primary_press:#75574B;--primary_hover:#BF917E;--primary_press:#75574B;
+--secondary_hover:#FBEDE8;--secondary_press:#EFDCD4;--gray_100:#F5F5F5;--gray_200:#EEEEEE;
+--gray_300:#e0e0e0;--gray_400:#bdbdbd;--gray_500:#9e9e9e;--gray_600:#757575;--gray_700:#616161;
+--accent:#F66F58;--error:#D32F2F;
+}
+@media (max-width:1023px){html{font-size:10px;-webkit-letter-spacing:1px;-moz-letter-spacing:1px;-ms-letter-spacing:1px;letter-spacing:1px;}}/*!sc*/
+body,#__next{
+	width:100%;height:100%;margin:0;line-height:normal;background-color:#fff;
+	}
+main{-webkit-flex:1;-ms-flex:1;flex:1;}
+.jGGXRc{
+	display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;cursor:pointer;
+	}
+data-styled.g380[id="item__Layout-sc-1puup1i-0"]{content:"jGGXRc,"}
+.fQvwec{border-radius:8px;width:100%;height:100%;}/*!sc*/
+data-styled.g381[id="item__Image-sc-1puup1i-1"]{content:"fQvwec,"}
+.crmenN{
+	margin-top:4px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;
+	-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;
+	-ms-flex-align:center;align-items:center;}/*!sc*/
+data-styled.g382[id="item__Meta-sc-1puup1i-2"]{content:"crmenN,"}
+.fZSMWd{
+	font-weight:normal;font-family:'Noto Sans KR','Helvetica','Helvetica Neue','Arial','sans-serif';
+	font-size:18px;line-height:28px;-webkit-letter-spacing:0.1px;-moz-letter-spacing:0.1px;-ms-letter-spacing:0.1px;
+	letter-spacing:0.1px;font-weight:bold;color:#bdbdbd;color:#937062;
+	}
+.gjAqav{
+	font-weight:normal;font-family:'Noto Sans KR','Helvetica','Helvetica Neue','Arial','sans-serif';
+	font-size:18px;line-height:28px;-webkit-letter-spacing:0.1px;-moz-letter-spacing:0.1px;-ms-letter-spacing:0.1px;
+	letter-spacing:0.1px;font-weight:bold;color:#bdbdbd;
+	}	
+data-styled.g383[id="item__State-sc-1puup1i-3"]{content:"fZSMWd,gjAqav,"}
+.loJNuz{
+	font-weight:normal;font-family:'Noto Sans KR','Helvetica','Helvetica Neue','Arial','sans-serif';
+	font-size:12px;line-height:18px;-webkit-letter-spacing:0.2px;-moz-letter-spacing:0.2px;-ms-letter-spacing:0.2px;
+	letter-spacing:0.2px;color:#9e9e9e;
+	}
+data-styled.g384[id="item__DateText-sc-1puup1i-4"]{content:"loJNuz,"}
+.jNsLQi{padding:80px 18px;}/*!sc*/
+@media (max-width:767px){.jNsLQi{padding:40px 14px;}}
+data-styled.g385[id="list__Layout-sc-1qs6nri-0"]{content:"jNsLQi,"}
+.kZVqvc{
+	margin:0 auto;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;
+	font-weight:normal;font-family:'Noto Sans KR','Helvetica','Helvetica Neue','Arial','sans-serif';
+	font-size:14px;line-height:20px;-webkit-letter-spacing:-0.5px;-moz-letter-spacing:-0.5px;-ms-letter-spacing:-0.5px;
+	letter-spacing:-0.5px;
+	}
+data-styled.g386[id="list__Frame-sc-1qs6nri-1"]{content:"kZVqvc,"}
+.ePhulE{
+	display:grid;grid-template-columns:repeat(2,minmax(auto,546px));
+	-webkit-column-gap:40px;column-gap:40px;row-gap:32px;
+	}
+	
+
+

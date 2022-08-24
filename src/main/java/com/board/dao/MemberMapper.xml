@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+
+	<!-- 회원가입 -->
+	<insert id="register" parameterType="MemberVO">
+		insert into member(mem_id,passwd,writer,phone,name,grade,mem_date)
+		values (#{mem_id},#{passwd},#{writer},#{phone},#{name},#{grade},sysdate)
+	</insert>	
+	 
+	<!-- 로그인-->
+	<select id="login" resultType="MemberVO">
+		SELECT mem_id, passwd FROM member WHERE mem_id = #{mem_id} AND passwd = #{passwd}  
+	</select> 
+	
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="MemberVO" resultType="int">
+        select count(*) from member where mem_id=#{mem_id}
+    </select>
+	
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="writerCheck" parameterType="MemberVO" resultType="int">
+        select count(*) from member where writer=#{writer}
+    </select>
+	
+	
+	<!-- 암호 찾기 -->
+	<select id="findPassword" resultType="MemberVO">
+		select * from member where mem_id=#{mem_id} and name=#{name} and phone=#{phone}
+	</select>
+	
+	<!-- 관리자 로그인 -->
+	<select id="login2" resultType="MemberVO">
+		SELECT manager_id, passwd2 FROM manager WHERE manager_id = #{manager_id} AND passwd2 = #{passwd2}  
+	</select>
+	
+	<!-- 회원수정를 찾을 실행할 sql-->
+	<select id="findMember" resultType="MemberVO"  parameterType="String">
+		select * from member where mem_id=#{mem_id}
+	</select> 
+	
+	<!-- 회원수정을 해주는 sql-->
+	<update id="updateMember" parameterType="MemberVO">
+		update member set passwd=#{passwd},writer=#{writer},phone=#{phone}
+		 where mem_id=#{mem_id}
+	</update>		
+	
+</mapper>

@@ -1,0 +1,56 @@
+@font-face{
+  font-family:'NanumGothic';
+  src:url("../fonts/NanumGothic.eot");
+  src:local(""),url("../fonts/NanumGothic.woff") format("woff");
+}
+/* 메인 */
+.h2 main {
+    font-size: 40px;
+    color: #333;
+    text-align: center; }
+
+.hrTag {
+    width: 50px;
+    height: 2px;
+    background: #000;
+    margin: 20px auto 10px;
+    display: block;
+    content: '';
+}
+
+
+/* 로그인 회원가입 입력폼 */
+.form-control {
+	margin-top:0px;
+}
+.input-group-addon{
+	padding:3px 10px;
+	border:none;
+	background-color:white;
+}
+
+/* 이벤트 글 쓰기*/
+.event_img{
+	padding:70px 60px;
+}
+.event_img img{
+	width:60%;
+	border: 1px solid;
+	border-radius: 8px
+}
+.event_write{
+	font-size:17px;
+	width:100%;
+	position:relative; left:60px; top:100px; right:20px;
+}
+.event_table{
+	border-bottom:2px solid;
+	padding:10px;
+	margin-left:50px;
+	width:9%;
+}
+.event_table_content{
+	padding:10px;
+	margin:15px 50px;
+}
+

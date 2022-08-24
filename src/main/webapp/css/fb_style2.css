@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/*
+작성날짜: 2022.03.01~
+작성자 : 홍지원
+*/
+
+body,html{margin:0; padding:0;}
+ul{padding:0;}
+
+.con_box{
+	width: 800px;
+	margin:0 auto;
+}
+
+.con_title{padding:30px 0;}
+.con_title div {text-align:center; margin-bottom:50px;}
+.con_title div img{width:40px;}
+.con_title h1{
+	text-align:center;
+}
+
+.btn_write{margin-bottom:20px;}
+.btn_write input{
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;
+}
+
+.view_tab{
+	float:right;
+	border:2px;
+}
+
+.con_table{
+	margin-top:20px;
+}
+
+.paging{
+	text-align:center;
+}
+
+.paging> .paging_btn{
+
+	color:#589c71;
+}
+
+.paging a{
+	color:#777;
+	text-decoration:none;}
+.paging a:hover{color:#589c71;}
+
+/* .paging ul li a{color:#777;}
+.paging ul li a:hover{color:#589c71;}
+.paging ul li.active a,
+.paging ul li.active a:hover{
+	background-color:#589c71;
+	border-color:#589c71;
+} */
+
+
+/*freeWriteForm.jsp*/
+
+.table_w{
+	padding:10px 0;
+	border:1px #777 solid;
+	width:800px;	
+}
+.con_box table td>a{
+	color:#888;
+}
+.con_box h1{
+	text-align:center;
+	margin-bottom:40px;
+}
+
+.con_box table td{padding:8px;}
+
+
+.write_btn{
+	text-align:center;
+	margin:30px auto;}
+.write_btn input {
+	margin:10px;
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;}
+
+
+/*freeWriteCon.jsp*/
+
+.fb_tit{margin-bottom:50px;}
+.fb_con{margin:25px 0;}
+
+/******댓글부분**********/
+.reply{
+	margin-top:50px;
+}
+.reply_tit{
+	font-size:20px;
+	margin-bottom:15px;
+}
+.reply_num{color:#589c71;}
+
+.reply_con{line-height:22px;}
+
+.reply_con ul{overflow:hidden;}
+
+.reply_con ul li{
+	list-style:none;
+	float:left;
+	color:#999;
+	font-size:14px;
+}
+
+.reply_con ul li.r_content{
+	color:#777;
+	width:100%;
+	padding:5px 0 0 25px;
+}
+
+li #re_delete{
+	font-weight:bold;
+}
+
+
+
+
+.re_img{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-right:5px;	
+}
+/*.re_info h4{
+	color:#999;
+	font-size:14px;
+}*/
+
+.re_info a{color:#999;}
+
+.re_info ul li b{margin-right:4px;}
+
+.re_infoname{
+	font-size:17px;
+	color:#ffbb12;
+}
+
+.reply_write{
+	width:100%;
+	
+}
+
+.reply_write{
+	float:left;
+	resize:none;
+	}
+
+
+ .btn_group > input{
+	width:100px; 
+	background-color:#589c71;
+	color:#fff;
+	border:none;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+	.con_box, .con_title{
+	width: 94%;
+	padding: 0 10px 0 10px;
+	}
+
+/* 	.con_box{
+	width:94%}	 */
+	
+	}
+	
+	
+@media screen and (max-width: 800px) {	
+	.btn_group>input{
+	width:15%;
+	}
+}

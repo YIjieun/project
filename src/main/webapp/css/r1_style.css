@@ -1,0 +1,224 @@
+@charset "UTF-8";
+
+/*
+작성날짜: 2022.03.02~
+작성자 : 김예린
+*/
+
+.con_box{
+	width: 800px;
+	margin:0 auto;
+}
+
+.con_title{padding:30px 0;}
+.con_title div {text-align:center; margin-bottom:50px;}
+.con_title div img{width:40px;}
+.con_title h1{
+	text-align:center;
+}
+
+/* 인기레시피 이미지 */
+.con_box > ul {
+	padding:0;
+	text-align:center;
+	border: solid #589c71 3px;
+	
+}
+.con_box > ul > li {
+  list-style-type: none;
+  margin: 22px;
+  /* border: 1px solid #589c71; */
+  transition: transform .3s;
+  overflow: hidden;
+ 
+}
+.con_box > ul  li:first-child{
+	/* margin-left:0; */
+}
+.con_box > ul > li > a {
+  text-decoration: none;
+   float:left;
+   
+}
+.con_box > ul > li > a > img {
+  width: 240px;
+  height: 180px;
+  
+}
+/* 인기레시피 이미지 효과 */
+.con_box > ul > li > a > img:hover {
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: .5s;
+}
+.videoTit {
+  display: block;
+  width: 240px;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin: 10px auto 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn_write{margin-bottom:20px;}
+.btn_write input{
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;
+}
+
+.con_table{
+	margin-top:20px;
+}
+
+.paging{
+	text-align:center;
+}
+
+.paging> .paging_btn{
+
+	color:#589c71;
+}
+
+.paging a{
+	color:#777;
+	text-decoration:none;}
+.paging a:hover{color:#589c71;}
+
+/* .paging ul li a{color:#777;}
+.paging ul li a:hover{color:#589c71;}
+.paging ul li.active a,
+.paging ul li.active a:hover{
+	background-color:#589c71;
+	border-color:#589c71;
+} */
+
+/*글작성*/
+
+.table_w{
+	padding:10px 0;
+	border:1px #777 solid;
+	width:800px;	
+}
+.con_box table td>a{
+	color:#888;
+}
+.con_box h1{
+	text-align:center;
+	margin-bottom:40px;
+}
+
+.con_box table td{padding:8px;}
+
+
+.write_btn{
+	text-align:center;
+	margin:30px auto;}
+.write_btn input {
+	margin:10px;
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;}
+
+
+/*글상세 메인이미지*/
+
+.r1_tit{margin-bottom:50px; text-align:center;}
+.r1_con{margin:25px 0;}
+/* .main_image{
+	width: 450px;
+  	height: 300px;
+  	display:block; 
+    margin-left: 46px;
+    margin-bottom:210px;
+} */
+
+ .btn_group > input{
+	width:100px; 
+	background-color:#589c71;
+	color:#fff;
+	border:none;
+}
+
+/* 글 상세보기 */
+.con_title_t{padding:30px 0;}
+.con_title_t div {text-align:center; }
+.con_title_t div img{width:40px;}
+.con_title_t h3{
+	text-align:center;
+}
+.t_box{ 
+	display: block;
+	
+	height: 70px;
+	border-style: solid;
+	border-color:#589c71;
+	border-width: 2px; 
+	padding: 12px; 
+	word-break: break-all;
+	text-align:left;
+
+ }
+.h_box{ 
+	display: block;
+	
+	height: 220px;
+	border-style: solid;
+	border-color:#589c71;
+	border-width: 2px; 
+	padding: 12px; 
+	word-break: break-all;
+	text-align:left;
+ }
+.rp_title{
+	display: inline-block;
+	height: 100px;
+	border-color:#589c71;
+	border-width: 2px;
+	padding: 12px; 
+	text-align:center;
+	width: 100%;
+    margin: 10px auto;
+}
+.second{
+    float: left;
+    
+    width:20%; 
+}
+.third{
+    float: left;
+    margin-left: 5%;
+    width:20%;
+}
+.fourth{
+    float: left;
+    margin-left: 5%;
+    width:20%;
+}
+.rp_title div {text-align:center; }
+.rp_title div img{width:40px;}
+.rp_title h5{
+	text-align:center;
+}
+@media screen and (max-width: 1024px) {
+	.con_box, .con_title{
+	width: 94%;
+	padding: 0 10px 0 10px;
+	}
+}
+
+@media screen and (max-width: 800px) {	
+	.btn_group>input{
+	width:15%;
+	}
+}

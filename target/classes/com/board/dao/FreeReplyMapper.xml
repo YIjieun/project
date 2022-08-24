@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="FreeReply">  
+ 
+ <!--1. 생성 -->
+ 
+ <select id="getNewRnum" resultType="int">
+ 	select max(r_num) from free_reply
+ </select>
+ 
+ 
+ <insert id="insertReply" parameterType="FreeReplyVO">
+    insert into free_reply(r_num,board_num,mem_id,writer,r_content,r_write_date,ref,re_step,re_level)
+    values(#{r_num},#{board_num},#{mem_id},#{writer},#{r_content},sysdate,1,0,0)
+ </insert>
+ 
+ 
+ <!-- 6.글삭제하기 -->
+ <delete id="deleteReply" parameterType="Integer">
+    delete from free_reply where r_num=#{r_num}
+ </delete>
+
+
+ 
+ <!-- 1. springboard2 테이블에서 SQL작업(1.글목록보기)  id는 sql구문 구분인자
+       ** slectList가 너무 많아서 4 말고 2 하나 더붙혔어요 -->
+<select id="selectList22"  resultType="FreeReplyVO" parameterType="int">
+ 	select *  from free_reply
+    where board_num=#{board_num} order by r_num desc
+</select>
+ 
+ <!-- 아이디로 작성자 찾기 -->
+ <select id="findOne1" resultType="String">
+ 	select writer from member where mem_id=#{mem_id} 
+ </select>
+ 
+ </mapper>
+
+
+
+
+
+
+

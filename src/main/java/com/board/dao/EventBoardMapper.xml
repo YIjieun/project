@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="Board">  
+ 
+ <!-- SQL작업
+ 		id: sql구문 구분인자 
+ 		resultType: select 된 데이터를 반환할 그릇을 정해주는것 (EventBoardVO 객체에 담김)-->
+ 		
+ 		
+<!-- 1. 글목록보기 --> 		
+<select id="selectList"  resultType="EventVO">
+ 	select event_image,event_code,event_yn,e_write_date,event_date,e_title
+ 		from event order by event_code desc
+</select>
+ 
+ <!-- 2. 글상세보기(레코드 한개 출력) -->
+ <select id="selectBoard" parameterType="Integer" resultType="EventVO">
+     select * from event where event_code=#{event_code}
+ </select>
+ 
+   <!-- 3. 최대값 구하기 -->
+ <select id="getNewSeq" resultType="int">
+ 	select max(event_code) from event
+ </select>
+ 
+ <!--4. 글쓰기 (업로드하는 파일명만 jdbcType=VARCHAR(문자열이라는구문)추가) -->	
+ <insert id="insertBoard" parameterType="EventVO">
+    insert into event(event_code,manager_id,e_title,e_content,event_yn,event_image,e_write_date,event_date)
+    values(#{event_code},#{manager_id},#{e_title},#{e_content},
+    			#{event_yn},#{event_image,jdbcType=VARCHAR},#{e_write_date},#{event_date})
+ </insert>
+ 
+  <!-- 5.글수정하기 -->
+ <update id="updateBoard" parameterType="EventVO">
+    update event set e_title=#{e_title},e_content=#{e_content},event_yn=#{event_yn},event_image=#{event_image:VARCHAR},
+    						 e_write_date=#{e_write_date},event_date=#{event_date}
+    where event_code=#{event_code}
+ </update>
+ 
+ <!-- 6.글삭제하기  -->
+ <delete id="deleteBoard" parameterType="Integer">
+    delete from event where event_code=#{event_code}
+ </delete>
+ 
+ <!-- * 검색어에 해당하는 총레코드수 구하기 (java.lang.Integer->Integer->int)
+<select id="selectCount" parameterType="map" resultType="Integer">
+     select count(*) from springboard2 
+     	<where>
+                 <if test="keyWord!=null and keyField=='title'">
+                      title  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='writer'">
+                      writer  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='content'">
+                       content  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='all'">
+                      title  like  '%' || #{keyWord} || '%' or
+                      writer  like  '%' || #{keyWord} || '%' or
+                      content  like  '%' || #{keyWord} || '%' 
+                 </if>
+           </where>
+ </select>
+ -->
+ 
+  <!-- 4. 조회수 증가하기 java.lang.String=>String(O)=>string(X)
+ <update id="updateHit" parameterType="Integer">
+    update springboard2 set hit=hit+1 where seq=#{seq}
+ </update>
+ -->
+ 
+ </mapper>
+
+
+
+
+
+
+

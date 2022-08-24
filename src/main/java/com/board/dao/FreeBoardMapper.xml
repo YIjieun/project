@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="Board">  
+ 
+ <!-- 1. springboard2 테이블에서 SQL작업(1.글목록보기)  id는 sql구문 구분인자-->
+<select id="selectList4" parameterType="map" resultType="FreeBoardVO">
+ 	select board_num,writer,f_title,f_category,f_content,f_view,postdate,f_img
+ 		from (select a.*,rownum rnum
+ 			from(select * from free_board
+ 				<where>
+ 				 	<if test="keyWord!=null and keyField=='f_title'">
+ 				 			f_title like '%' || #{keyWord} || '%'
+ 				 	</if>
+ 				 	<if test="keyWord!=null and keyField=='writer'">
+                            writer like '%' || #{keyWord} || '%'
+                     </if>
+                     <if test="keyWord!=null and keyField=='f_content'">
+                            f_content like '%' || #{keyWord} || '%'
+                     </if>
+                     <if test="keyWord!=null and keyField=='all'">
+                            f_title like '%' || #{keyWord} || '%'  or
+                            writer like '%' || #{keyWord} || '%'  or
+                            f_content like '%' || #{keyWord} || '%'
+                     </if>
+ 				</where>
+ 			order by board_num desc)a)
+ 	<![CDATA[
+    where rnum >=#{start} AND rnum <=#{end}
+    ]]>
+</select>
+ 
+ <!-- 2.검색어에 해당하는 총레코드수 구하기 (java.lang.Integer->Integer->int)-->
+<select id="selectCount4" parameterType="map" resultType="Integer">
+     select count(*) from free_board 
+     	<where>
+                 <if test="keyWord!=null and keyField=='f_title'">
+                      f_title  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='writer'">
+                      writer  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='f_content'">
+                       f_content  like  '%' || #{keyWord} || '%'
+                 </if>
+                 <if test="keyWord!=null and keyField=='all'">
+                      f_title  like  '%' || #{keyWord} || '%' or
+                      writer  like  '%' || #{keyWord} || '%' or
+                      f_content  like  '%' || #{keyWord} || '%' 
+                 </if>
+           </where>
+ </select>
+ <!--최대값구하기  -->
+ <select id="getNewSeq4" resultType="int">
+ 	select max(board_num) from free_board
+ 
+ </select>
+ 
+ <!--3. 글쓰기  hit는 값을 입력해주지 않는다. (sysdate,mysql(new()),  
+ 		업로드하는 파일명만 jdbcType=VARCHAR(문자열이라는구문)추가 -->
+ <insert id="insertBoard4" parameterType="FreeBoardVO">
+    insert into free_board(board_num,mem_id,writer,f_title,f_category,f_content,f_view,postdate,f_img)
+    values(#{board_num},#{mem_id},#{writer},#{f_title},#{f_category},#{f_content},0,sysdate,
+              #{f_img,jdbcType=VARCHAR})
+ </insert>
+ 
+ <!-- 4. 조회수 증가하기 java.lang.String=>String(O)=>string(X)-->
+ <update id="updateHit4" parameterType="Integer">
+    update free_board set f_view=f_view+1 where board_num=#{board_num}
+ </update>
+ 
+ <!-- 5. 게시물번호에 따른 글상세보기(레코드 한개 출력)  -->
+ <select id="selectBoard4" parameterType="Integer" resultType="FreeBoardVO">
+    select * from free_board where board_num=#{board_num}
+ </select>
+ 
+ <!-- 6.글삭제하기 -->
+ <delete id="deleteBoard4" parameterType="Integer">
+    delete from free_board where board_num=#{board_num} 
+ </delete>
+ 
+ <!-- 7.글수정하기  -->
+ <update id="updateBoard4" parameterType="FreeBoardVO">
+    update free_board set f_title=#{f_title},f_category=#{f_category}
+    ,f_content=#{f_content},f_img=#{f_img:VARCHAR}
+    where board_num=#{board_num}
+ </update>
+ 
+ <!-- 아이디로 작성자 찾기 -->
+ <select id="findOne" resultType="String">
+ 	select writer from member where mem_id=#{mem_id} 
+ </select>
+ 
+ </mapper>
+
+
+
+
+
+
+

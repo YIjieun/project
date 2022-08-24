@@ -1,0 +1,49 @@
+/* 추천레시피 */
+.section03{margin-top:30px; }
+
+.section03 .thmb_list02{padding:30px 0 0;}
+.section03 .thmb_list02 .item{float: left; width:300px; min-height: 300px; margin-right:20px; vertical-align: top;padding:15px 0 15px;}
+/*float: left;
+    width: 290px;
+    min-height: 300px;
+    ma: ;
+    margin-right: 20px;
+    rtical-align: top;
+    padding: 15px 0 15px; */
+
+.section03 .thmb_list02 .item:nth-child(3n){margin-right:0;}
+.section03 .thmb_list02 .item:nth-child(4n){margin-right:0 !important;}
+.section03 .thmb_list02 .item:nth-child(6n){margin-right:40px;}
+/*  */
+
+
+.thmb_list02 .item.big{float: left; width:620px; min-height: 550px; margin-right:40px; vertical-align: top;padding:15px 0 15px;}
+/*     float: left;
+    width: 600px;
+    min-height: 550px;
+    margin-right: 40px;
+    vertical-align: top;
+    padding: 15px 0 15px; */
+
+.thmb_list02 .item.big .img img{width:620px; height: 435px;}
+.thmb_list02 .item.big .info{padding:30px 0 30px; background: #ffbb12; }
+.thmb_list02 .item.big .info .info_tag, .thmb_list02 .item.big .info .info_title a{margin-left:20px; width:90%; }
+.thmb_list02 .item.big .info .info_title a{font-size: 25px; color: #333;}
+
+.thmb_list02 .item.big.no6{float: right;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

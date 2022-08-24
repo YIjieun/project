@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.con_box{
+	width: 1000px;
+	margin:0 auto;
+}
+
+.con_title{padding:30px 0;}
+.con_title div {text-align:center; }
+.con_title div img{width:40px;}
+.con_title h1{
+	text-align:center;
+}
+
+.btn_write{margin-bottom:20px;}
+.btn_write input{
+	width:80px;
+	height:40px;
+	background-color:#589c71;
+	color:#fff;
+	border:0;
+	outline:0;
+}
+
+.view_tab{
+	float:right;
+	border:2px;
+}
+
+.con_table{
+	margin-top:20px;
+}
+
+.paging{
+	text-align:center;
+	margin-top: 50px;
+}
+
+.paging ul li a{color:#777;}
+.paging ul li a:hover{color:#589c71;}
+.paging ul li.active a,
+.paging ul li.active a:hover{
+	background-color:#589c71;
+	border-color:#589c71;
+}
+

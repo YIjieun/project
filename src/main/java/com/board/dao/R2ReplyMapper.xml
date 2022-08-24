@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+    
+<mapper namespace="R2Reply">  
+ 
+ <!--1. 생성 -->
+ <select id="getNewRnum99" resultType="int">
+ 	select max(r_num) from r2_reply
+ </select>
+ 
+ <insert id="insertReply99" parameterType="R2ReplyVO">
+    insert into r2_reply(r_num,board_num,mem_id,writer,ref,re_step,re_level,r_content,r_write_date)
+    values(#{r_num},#{board_num},#{mem_id},#{writer},1,0,0,#{r_content},sysdate)
+ </insert>
+ 
+ <!-- 6.글삭제하기 -->
+ <delete id="deleteReply99" parameterType="Integer">
+    delete from r2_reply where r_num=#{r_num}
+ </delete>
+
+ <!-- 1. springboard2 테이블에서 SQL작업(1.글목록보기)  id는 sql구문 구분인자 -->  
+<select id="selectList99"  resultType="R2ReplyVO" parameterType="int">
+ 	select *  from r2_reply
+    where board_num=#{board_num} order by r_num desc
+</select>
+
+ </mapper>
